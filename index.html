@@ -13,6 +13,7 @@
             --color-light: #F0F0F0; /* 基本の文字色（明るいグレー） */
             --color-accent: #E53935; /* アクセントカラー（赤） */
             --color-secondary: #333333; /* セクションの背景色 */
+            --color-blue: #03A9F4; /* イルカモチーフのための青 */
             --spacing-large: 40px;
             --spacing-medium: 20px;
         }
@@ -58,26 +59,48 @@
             margin: 0;
         }
 
-        /* === 3. 自己紹介 (Profile) === */
+        /* === 3. 自己紹介 (Profile) - イルカモチーフの追加 === */
         .profile-section {
             text-align: center;
             background-color: var(--color-dark);
             padding: var(--spacing-large) 0;
         }
+        
+        /* イルカの波を表現するCSS図形 */
+        .dolphin-wave {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to right, var(--color-blue), #0288D1);
+            border-radius: 50% / 0 0 100% 100%; /* 波のような下向きのカーブ */
+            margin-bottom: -15px; /* アイコンを波に乗せるため少し上に重ねる */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
 
         .profile-icon {
-            /* アイコンの円形ボックスをCSSで作成 */
+            /* アイコンを波の上に配置 */
             background-color: var(--color-accent);
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             margin: 0 auto var(--spacing-medium);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4em;
-            color: var(--color-dark); /* アイコンの色を背景色に合わせて目立たせる */
+            color: var(--color-dark);
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 0 5px var(--color-dark), 0 0 0 7px var(--color-accent); /* 二重リング */
         }
+        
+        /* Font Awesomeには直接的なイルカのアイコンがないため、魚のアイコンを代用 */
+        .profile-icon i {
+             /* 回転させてジャンプしているように見せる */
+            transform: rotate(-20deg); 
+            color: var(--color-light);
+        }
+
 
         .profile-section h2 {
             font-size: 2.2em;
@@ -149,9 +172,9 @@
             }
 
             .profile-icon {
-                width: 100px;
-                height: 100px;
-                font-size: 3.5em;
+                width: 80px;
+                height: 80px;
+                font-size: 3em;
             }
             
             .gacuchika-section h3 {
@@ -178,9 +201,11 @@
 
     <main>
         <section id="profile" class="section profile-section">
+            <div class="dolphin-wave"></div>
+            
             <div class="container">
                 <div class="profile-icon">
-                    <i class="fas fa-user-tie"></i>
+                    <i class="fas fa-fish"></i>
                 </div>
                 <h2>荒瀧 颯介 (ARATAKI Sōsuke)</h2>
                 <p>所属: 日本大学</p>
@@ -190,7 +215,7 @@
 
         <section id="gacuchika" class="section gacuchika-section">
             <div class="container">
-                <h3><i class="fas fa-fire-extinguisher"></i> 学生時代に最も注力したこと (リーダーシップ経験)</h3>
+                <h3><i class="fas fa-handshake"></i> 学生時代に最も注力したこと (協調型リーダーシップ)</h3>
                 
                 <div class="gacuchika-content">
                     <p>
